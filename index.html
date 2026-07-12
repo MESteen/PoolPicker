@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
-    <title>Hello World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>🎱 PoolPicker</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Hello World!</h1>
-    <p>Mijn eerste GitHub Pages website.</p>
+
+    <div class="background-blur"></div>
+
+    <div class="floating-ball ball1"></div>
+    <div class="floating-ball ball2"></div>
+    <div class="floating-ball ball3"></div>
+
+    <main class="app">
+
+        <div class="phone">
+
+            <div class="progress">
+                <div class="progress-fill"></div>
+            </div>
+
+            <section class="screen active" id="intro">
+
+                <div class="logo">
+                    🎱
+                </div>
+
+                <h1>PoolPicker</h1>
+
+                <h2>Speciaal voor Patricia</h2>
+
+                <p>
+                    Ik heb iets leuks bedacht...
+                </p>
+
+                <p>
+                    Na lang nadenken,
+                    een beetje onderzoek,
+                    en een volledig objectieve selectieprocedure...
+                </p>
+
+                <p class="highlight">
+                    ben jij uitgekozen.
+                </p>
+
+                <button class="primary-btn" id="startButton">
+                    Vertel verder →
+                </button>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+
 </body>
+
 </html>
