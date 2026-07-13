@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PoolPicker - De grote vraag</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    height:100dvh;
+    overflow:hidden;
+}
+
+/* Mobiel frame */
+
+.phone{
+    width:390px;
+    height:844px;
+    max-height:100vh;
+    max-height:100dvh;
+    border-radius:38px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    background:linear-gradient(165deg,#fdf2ef 0%,#fbe8ea 55%,#f7dfe6 100%);
+}
+
+@media (max-width:430px){
+    .phone{
+        width:100vw;
+        height:100vh;
+        height:100dvh;
+        max-height:none;
+        border-radius:0;
+        box-shadow:none;
+    }
+}
+
+.content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    padding:25px 18px;
+}
+
+/* progress */
+
+.progress{
+    width:100%;
+    margin-top:8px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:center;
+    color:#555;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.progress-bar{
+    width:100%;
+    height:5px;
+    background:rgba(0,0,0,.08);
+    border-radius:20px;
+}
+
+.progress-fill{
+    width:33%;
+    height:100%;
+    background:#ff4f83;
+    border-radius:20px;
+}
+
+/* middengedeelte, verticaal gecentreerd */
+
+.middle{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:22px;
+}
+
+/* headline */
+
+.headline{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-family:'Dancing Script',cursive;
+    font-size:30px;
+    font-weight:700;
+    color:#2b2b2b;
+}
+
+.headline .doodle{
+    width:26px;
+    height:26px;
+    color:#8fb3e0;
+}
+
+/* kaart */
+
+.card{
+    height:50vh;
+    height:50dvh;
+    background:#fffaf8;
+    border-radius:28px;
+    padding:34px 26px 26px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+}
+
+.question{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.card h2{
+    font-family:'Dancing Script',cursive;
+    font-size:36px;
+    font-weight:700;
+    color:#2b2b2b;
+    line-height:1.35;
+}
+
+.card h2 span{
+    color:#ff4f83;
+}
+
+.heart-doodle{
+    margin:18px auto 0;
+    display:block;
+    font-size:44px;
+    line-height:1;
+}
+
+.choice-btn{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border-radius:16px;
+    height:56px;
+    font-family:'Quicksand',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    border:none;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.choice-btn.yes{
+    margin-top:auto;
+    background:#ff4f83;
+    color:white;
+    box-shadow:0 10px 20px rgba(255,79,131,.35);
+}
+
+.choice-btn.yes:hover{
+    background:#ff3b74;
+    transform:translateY(-2px);
+}
+
+.choice-btn.no{
+    background:white;
+    color:#555;
+    border:2px solid #ffd7e0;
+    margin-top:12px;
+}
+
+.choice-btn.no:hover{
+    background:#fff5f7;
+}
+
+/* footer note */
+
+.footer-note{
+    position:relative;
+    text-align:center;
+    color:#9b9b9b;
+    font-family:'Dancing Script',cursive;
+    font-size:19px;
+}
+
+.footer-note .arrow-doodle{
+    position:absolute;
+    width:34px;
+    height:34px;
+    color:#ff8fa3;
+    right:8px;
+    top:22px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="phone">
+
+    <div class="content">
+
+        <div class="progress">
+
+            <div class="progress-top">
+                2 van 6
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+
+        </div>
+
+        <div class="middle">
+
+            <div class="headline">
+                De grote vraag...
+                <svg class="doodle" viewBox="0 0 26 26" fill="none">
+                    <path d="M3 16 Q9 8 15 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M9 22 Q15 15 21 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <div class="card">
+
+                <div class="question">
+                    <h2>
+                        Wil jij met mij gaan <span>poolen?</span>
+                    </h2>
+
+                    <span class="heart-doodle">😊</span>
+                </div>
+
+                <button class="choice-btn yes">
+                    Ja, lijkt me leuk! 🤩
+                </button>
+
+                <button class="choice-btn no">
+                    Ehhh... nee 🙈
+                </button>
+
+            </div>
+
+            <div class="footer-note">
+                Weet je het héél zeker? 😏
+                <svg class="arrow-doodle" viewBox="0 0 34 34" fill="none">
+                    <path d="M4 6 C 4 20, 14 26, 26 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <path d="M20 21 L27 25 L23 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
