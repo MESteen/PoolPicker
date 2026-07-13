@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PoolPicker - Hoe laat?</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    height:100dvh;
+    overflow:hidden;
+}
+
+/* Mobiel frame */
+
+.phone{
+    width:390px;
+    height:844px;
+    max-height:100vh;
+    max-height:100dvh;
+    border-radius:38px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    background:linear-gradient(165deg,#fdf2ef 0%,#fbe8ea 55%,#f7dfe6 100%);
+}
+
+@media (max-width:430px){
+    .phone{
+        width:100vw;
+        height:100vh;
+        height:100dvh;
+        max-height:none;
+        border-radius:0;
+        box-shadow:none;
+    }
+}
+
+.content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    padding:25px 18px;
+}
+
+/* progress */
+
+.progress{
+    width:100%;
+    margin-top:8px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:center;
+    color:#555;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.progress-bar{
+    width:100%;
+    height:5px;
+    background:rgba(0,0,0,.08);
+    border-radius:20px;
+}
+
+.progress-fill{
+    width:66.6%;
+    height:100%;
+    background:#ff4f83;
+    border-radius:20px;
+}
+
+/* middengedeelte */
+
+.middle{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+}
+
+/* headline */
+
+.headline{
+    position:relative;
+    text-align:center;
+    font-family:'Dancing Script',cursive;
+    font-weight:700;
+    line-height:1.15;
+}
+
+.headline .line1{
+    font-size:34px;
+    color:#2b2b2b;
+    display:block;
+    letter-spacing:.3px;
+}
+
+.headline .line2{
+    margin-top:2px;
+    font-size:30px;
+    color:#ff4f83;
+    display:block;
+    letter-spacing:.3px;
+}
+
+.clock-badge{
+    position:absolute;
+    top:-14px;
+    right:18px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#fff;
+    border:2.5px solid #ff4f83;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transform:rotate(12deg);
+    box-shadow:0 6px 14px rgba(255,79,131,.25);
+}
+
+/* tijd kaart */
+
+.card{
+    background:#fffaf8;
+    border-radius:28px;
+    padding:18px 22px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.wheel-wrap{
+    position:relative;
+    height:220px;
+}
+
+.highlight-bar{
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+    height:44px;
+    transform:translateY(-50%);
+    background:#ffe1ea;
+    border-radius:14px;
+    z-index:0;
+    pointer-events:none;
+}
+
+.wheel-columns{
+    position:relative;
+    z-index:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    height:100%;
+}
+
+.wheel-col{
+    width:70px;
+    height:100%;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+}
+
+.wheel-col::-webkit-scrollbar{
+    display:none;
+}
+
+.wheel-pad{
+    height:88px;
+}
+
+.wheel-item{
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    scroll-snap-align:center;
+    font-family:'Quicksand',sans-serif;
+    font-weight:600;
+    font-size:22px;
+    color:#c9c9c9;
+    cursor:pointer;
+    transition:color .15s,opacity .15s;
+}
+
+.wheel-item.selected{
+    color:#ff4f83;
+    font-size:26px;
+}
+
+/* footer note */
+
+.footer-note{
+    text-align:center;
+    color:#9b9b9b;
+    font-family:'Dancing Script',cursive;
+    font-size:19px;
+}
+
+/* button */
+
+.btn{
+    margin-top:auto;
+    margin-bottom:10px;
+    background:#ff4f83;
+    color:white;
+    border:none;
+    border-radius:18px;
+    height:64px;
+    font-family:'Quicksand',sans-serif;
+    font-size:19px;
+    font-weight:500;
+    letter-spacing:.4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    cursor:pointer;
+    transition:.25s;
+    text-decoration:none;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    background:#ff3b74;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="phone">
+
+    <div class="content">
+
+        <div class="progress">
+
+            <div class="progress-top">
+                4 van 6
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+
+        </div>
+
+        <div class="middle">
+
+            <div class="headline">
+                <span class="line1">Hoe laat</span>
+                <span class="line2">zullen we afspreken?</span>
+
+                <div class="clock-badge">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="8.5" stroke="#ff4f83" stroke-width="1.5"/>
+                        <path d="M10 5.5V10L13 12" stroke="#ff4f83" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <div class="wheel-wrap">
+
+                    <div class="highlight-bar"></div>
+
+                    <div class="wheel-columns">
+
+                        <div class="wheel-col" id="hourCol"></div>
+
+                        <div class="wheel-col" id="minuteCol"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="footer-note">
+                's Avonds is altijd goed 😊
+            </div>
+
+        </div>
+
+        <button class="btn">
+            Volgende <span>→</span>
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+    const ROW_HEIGHT = 44;
+
+    function buildWheel(col, values, defaultValue, onChange){
+
+        const topPad = document.createElement('div');
+        topPad.className = 'wheel-pad';
+        col.appendChild(topPad);
+
+        const items = values.map(function(v){
+            const item = document.createElement('div');
+            item.className = 'wheel-item';
+            item.textContent = v;
+            item.dataset.value = v;
+            col.appendChild(item);
+            return item;
+        });
+
+        const bottomPad = document.createElement('div');
+        bottomPad.className = 'wheel-pad';
+        col.appendChild(bottomPad);
+
+        function updateHighlight(centerIndex){
+            items.forEach(function(item, i){
+                const dist = Math.abs(i - centerIndex);
+                item.classList.toggle('selected', dist === 0);
+                item.style.opacity = Math.max(.2, 1 - dist * .35);
+            });
+        }
+
+        function centerIndexFromScroll(){
+            const idx = Math.round(col.scrollTop / ROW_HEIGHT);
+            return Math.min(Math.max(idx, 0), items.length - 1);
+        }
+
+        let scrollTimer = null;
+
+        col.addEventListener('scroll', function(){
+            updateHighlight(centerIndexFromScroll());
+
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(function(){
+                const idx = centerIndexFromScroll();
+                col.scrollTo({ top: idx * ROW_HEIGHT, behavior: 'smooth' });
+                onChange(items[idx].dataset.value);
+            }, 120);
+        });
+
+        items.forEach(function(item, i){
+            item.addEventListener('click', function(){
+                col.scrollTo({ top: i * ROW_HEIGHT, behavior: 'smooth' });
+            });
+        });
+
+        const startIndex = values.indexOf(defaultValue);
+        col.scrollTop = startIndex * ROW_HEIGHT;
+        updateHighlight(startIndex);
+        onChange(defaultValue);
+    }
+
+    const hours = [];
+    for(let h = 0; h < 24; h++){ hours.push(String(h).padStart(2,'0')); }
+
+    const minutes = [];
+    for(let m = 0; m < 60; m += 5){ minutes.push(String(m).padStart(2,'0')); }
+
+    let selectedHour = '19';
+    let selectedMinute = '30';
+
+    buildWheel(document.getElementById('hourCol'), hours, '19', function(v){ selectedHour = v; });
+    buildWheel(document.getElementById('minuteCol'), minutes, '30', function(v){ selectedMinute = v; });
+
+</script>
+
+</body>
+</html>
