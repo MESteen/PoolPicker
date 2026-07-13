@@ -99,8 +99,7 @@ body{
     flex:1;
     display:flex;
     flex-direction:column;
-    justify-content:center;
-    gap:22px;
+    justify-content:space-evenly;
 }
 
 /* headline */
@@ -175,7 +174,12 @@ body{
     font-size:16px;
     border:none;
     cursor:pointer;
-    transition:.2s;
+    transition:.25s;
+    transform-origin:center;
+}
+
+a.choice-btn{
+    text-decoration:none;
 }
 
 .choice-btn.yes{
@@ -261,11 +265,11 @@ body{
                     <span class="heart-doodle">😊</span>
                 </div>
 
-                <button class="choice-btn yes">
+                <a href="page3.html" class="choice-btn yes" id="yesBtn">
                     Ja, lijkt me leuk! 🤩
-                </button>
+                </a>
 
-                <button class="choice-btn no">
+                <button class="choice-btn no" id="noBtn">
                     Ehhh... nee 🙈
                 </button>
 
@@ -284,6 +288,32 @@ body{
     </div>
 
 </div>
+
+<script>
+
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+
+    const noScale  = [1, .86, .72, .58, .44, .3, .16];
+    const noOpacity= [1, 1, 1, .85, .65, .4, .15];
+    const yesScale = [1, 1.06, 1.12, 1.18, 1.24, 1.3, 1.36];
+
+    let step = 0;
+
+    noBtn.addEventListener('click', function(e){
+        e.preventDefault();
+
+        if(step < 6){
+            step++;
+        }
+
+        noBtn.style.transform = `scale(${noScale[step]})`;
+        noBtn.style.opacity = noOpacity[step];
+
+        yesBtn.style.transform = `scale(${yesScale[step]})`;
+    });
+
+</script>
 
 </body>
 </html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PoolPicker - Welke dag?</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    height:100dvh;
+    overflow:hidden;
+}
+
+/* Mobiel frame */
+
+.phone{
+    width:390px;
+    height:844px;
+    max-height:100vh;
+    max-height:100dvh;
+    border-radius:38px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    background:linear-gradient(165deg,#fdf2ef 0%,#fbe8ea 55%,#f7dfe6 100%);
+}
+
+@media (max-width:430px){
+    .phone{
+        width:100vw;
+        height:100vh;
+        height:100dvh;
+        max-height:none;
+        border-radius:0;
+        box-shadow:none;
+    }
+}
+
+.content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    padding:25px 18px;
+}
+
+/* progress */
+
+.progress{
+    width:100%;
+    margin-top:8px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:center;
+    color:#555;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.progress-bar{
+    width:100%;
+    height:5px;
+    background:rgba(0,0,0,.08);
+    border-radius:20px;
+}
+
+.progress-fill{
+    width:50%;
+    height:100%;
+    background:#ff4f83;
+    border-radius:20px;
+}
+
+/* middengedeelte */
+
+.middle{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+}
+
+/* headline */
+
+.headline{
+    text-align:center;
+    font-family:'Dancing Script',cursive;
+    font-weight:700;
+    line-height:1.15;
+}
+
+.headline .line1{
+    font-size:34px;
+    color:#2b2b2b;
+    display:block;
+    letter-spacing:.3px;
+}
+
+.headline .line2{
+    margin-top:2px;
+    font-size:30px;
+    color:#ff4f83;
+    display:block;
+    letter-spacing:.3px;
+}
+
+/* kalender kaart */
+
+.card{
+    background:#fffaf8;
+    border-radius:28px;
+    padding:26px 22px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.cal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+
+.cal-nav{
+    width:32px;
+    height:32px;
+    border:none;
+    background:none;
+    color:#999;
+    font-size:18px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.cal-nav:hover{
+    color:#ff4f83;
+}
+
+.cal-title{
+    font-family:'Quicksand',sans-serif;
+    font-weight:600;
+    font-size:17px;
+    color:#2b2b2b;
+}
+
+.cal-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    row-gap:10px;
+    text-align:center;
+}
+
+.cal-dow{
+    font-family:'Quicksand',sans-serif;
+    font-weight:600;
+    font-size:11px;
+    color:#b9b9b9;
+}
+
+.cal-day{
+    font-family:'Quicksand',sans-serif;
+    font-size:14px;
+    color:#3a3a3a;
+    width:32px;
+    height:32px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.cal-day.other{
+    color:#d9d9d9;
+    cursor:default;
+}
+
+.cal-day:not(.other):hover{
+    background:#ffe4ea;
+}
+
+.cal-day.selected{
+    background:#ff4f83;
+    color:white;
+    font-weight:600;
+}
+
+/* footer note */
+
+.footer-note{
+    text-align:center;
+    color:#9b9b9b;
+    font-family:'Dancing Script',cursive;
+    font-size:19px;
+}
+
+/* button */
+
+.btn{
+    margin-top:auto;
+    margin-bottom:10px;
+    background:#ff4f83;
+    color:white;
+    border:none;
+    border-radius:18px;
+    height:64px;
+    font-family:'Quicksand',sans-serif;
+    font-size:19px;
+    font-weight:500;
+    letter-spacing:.4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    background:#ff3b74;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="phone">
+
+    <div class="content">
+
+        <div class="progress">
+
+            <div class="progress-top">
+                3 van 6
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+
+        </div>
+
+        <div class="middle">
+
+            <div class="headline">
+                <span class="line1">Welke dag</span>
+                <span class="line2">past jou het beste?</span>
+            </div>
+
+            <div class="card">
+
+                <div class="cal-header">
+                    <button class="cal-nav" id="prevMonth">‹</button>
+                    <div class="cal-title" id="calTitle"></div>
+                    <button class="cal-nav" id="nextMonth">›</button>
+                </div>
+
+                <div class="cal-grid" id="calGrid"></div>
+
+            </div>
+
+            <div class="footer-note">
+                Neem je tijd, ik wacht wel. 😏
+            </div>
+
+        </div>
+
+        <button class="btn">
+            Volgende <span>→</span>
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+    const dow = ['MA','DI','WO','DO','VR','ZA','ZO'];
+    const months = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+
+    const today = new Date();
+    let viewYear = today.getFullYear();
+    let viewMonth = today.getMonth();
+    let selectedDate = null;
+
+    const calTitle = document.getElementById('calTitle');
+    const calGrid = document.getElementById('calGrid');
+
+    function renderCalendar(){
+
+        calGrid.innerHTML = '';
+
+        const label = months[viewMonth].charAt(0).toUpperCase() + months[viewMonth].slice(1);
+        calTitle.textContent = `${label} ${viewYear}`;
+
+        dow.forEach(function(d){
+            const cell = document.createElement('div');
+            cell.className = 'cal-dow';
+            cell.textContent = d;
+            calGrid.appendChild(cell);
+        });
+
+        const firstOfMonth = new Date(viewYear, viewMonth, 1);
+        const startOffset = (firstOfMonth.getDay() + 6) % 7;
+        const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+        const daysInPrevMonth = new Date(viewYear, viewMonth, 0).getDate();
+        const totalCells = Math.ceil((startOffset + daysInMonth) / 7) * 7;
+
+        for(let i = 0; i < totalCells; i++){
+
+            const dayNum = i - startOffset + 1;
+            const cell = document.createElement('div');
+            cell.className = 'cal-day';
+
+            if(dayNum < 1){
+                cell.classList.add('other');
+                cell.textContent = daysInPrevMonth + dayNum;
+            } else if(dayNum > daysInMonth){
+                cell.classList.add('other');
+                cell.textContent = dayNum - daysInMonth;
+            } else {
+                cell.textContent = dayNum;
+
+                if(selectedDate && selectedDate.getFullYear() === viewYear && selectedDate.getMonth() === viewMonth && selectedDate.getDate() === dayNum){
+                    cell.classList.add('selected');
+                }
+
+                cell.addEventListener('click', function(){
+                    selectedDate = new Date(viewYear, viewMonth, dayNum);
+                    renderCalendar();
+                });
+            }
+
+            calGrid.appendChild(cell);
+        }
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', function(){
+        viewMonth--;
+        if(viewMonth < 0){ viewMonth = 11; viewYear--; }
+        renderCalendar();
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', function(){
+        viewMonth++;
+        if(viewMonth > 11){ viewMonth = 0; viewYear++; }
+        renderCalendar();
+    });
+
+    selectedDate = today;
+    renderCalendar();
+
+</script>
+
+</body>
+</html>
