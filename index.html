@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<script>
+    if(localStorage.getItem('poolpicker_date') && localStorage.getItem('poolpicker_hour') && localStorage.getItem('poolpicker_minute')){
+        window.location.replace('page5.html');
+    }
+</script>
+
 <title>PoolPicker - Intro</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,7 +120,7 @@ body{
 }
 
 .progress-fill{
-    width:16%;
+    width:20%;
     height:100%;
     background:#ff4f83;
     border-radius:20px;
@@ -237,7 +243,7 @@ a.btn{
         <div class="progress">
 
             <div class="progress-top">
-                1 van 6
+                1 van 5
             </div>
 
             <div class="progress-bar">
