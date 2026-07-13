@@ -1,73 +1,271 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>🎱 PoolPicker</title>
+<title>PoolPicker - Intro</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+/* Mobiel frame */
+
+.phone{
+    width:390px;
+    height:844px;
+    border-radius:38px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+/* achtergrond, 90° gedraaid zodat de (liggende) foto de staande frame vult */
+
+.bg{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:844px;
+    height:390px;
+    background:url("../PoolPicker/assets/pooltafel.jpg") center center/cover;
+    transform:translate(-50%,-50%) rotate(90deg);
+    z-index:0;
+}
+
+/* donkere overlay */
+
+.overlay{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.70)
+    );
+}
+
+.content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    padding:25px;
+}
+
+/* progress */
+
+.progress{
+    width:100%;
+    margin-top:8px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:center;
+    color:white;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.progress-bar{
+    width:100%;
+    height:5px;
+    background:rgba(255,255,255,.25);
+    border-radius:20px;
+}
+
+.progress-fill{
+    width:16%;
+    height:100%;
+    background:#ff4f83;
+    border-radius:20px;
+}
+
+/* tekst */
+
+.hero{
+    margin-top:70px;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-family:'Dancing Script',cursive;
+    font-size:52px;
+    font-weight:700;
+    line-height:1.1;
+}
+
+.hero h1 span{
+    color:#ff5c90;
+}
+
+.hero p{
+    margin-top:28px;
+    line-height:1.9;
+    font-size:18px;
+    color:#efefef;
+    font-weight:300;
+}
+
+.hero strong{
+    font-weight:600;
+}
+
+/* 8-ball */
+
+.ball{
+    margin:auto;
+    width:165px;
+    height:165px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#666,#111 70%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:
+        inset -10px -15px 30px rgba(0,0,0,.6),
+        0 15px 30px rgba(0,0,0,.45);
+}
+
+.circle{
+    width:72px;
+    height:72px;
+    background:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:42px;
+    font-weight:700;
+}
+
+/* button */
+
+.btn{
+    margin-bottom:35px;
+    background:#ff4f83;
+    color:white;
+    border:none;
+    border-radius:18px;
+    height:64px;
+    font-size:21px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    background:#ff3b74;
+}
+
+.heart{
+    position:absolute;
+    z-index:3;
+    color:#ff6d98;
+    font-size:34px;
+}
+
+.heart.one{
+    top:130px;
+    right:40px;
+}
+
+.heart.two{
+    bottom:240px;
+    right:35px;
+}
+
+</style>
+
 </head>
-
 <body>
 
-    <div class="background-blur"></div>
+<div class="phone">
 
-    <div class="floating-ball ball1"></div>
-    <div class="floating-ball ball2"></div>
-    <div class="floating-ball ball3"></div>
+    <div class="bg"></div>
 
-    <main class="app">
+    <div class="overlay"></div>
 
-        <div class="phone">
+    <div class="content">
 
-            <div class="progress">
+        <div class="progress">
+
+            <div class="progress-top">
+                1 van 6
+            </div>
+
+            <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
 
-            <section class="screen active" id="intro">
+        </div>
 
-                <div class="logo">
-                    🎱
-                </div>
+        <div class="hero">
 
-                <h1>PoolPicker</h1>
+            <h1>
+                Hey Patricia... <span>♡</span>
+            </h1>
 
-                <h2>Speciaal voor Patricia</h2>
+            <p>
+                Ik heb iets leuks in gedachten...
+                <br><br>
 
-                <p>
-                    Ik heb iets leuks bedacht...
-                </p>
+                Iemand om mee te lachen,
+                <br>
+                een beetje te flirten
+                <br>
+                en natuurlijk...
+                <strong>te poolen.</strong>
+                🎱
+                <br><br>
 
-                <p>
-                    Na lang nadenken,
-                    een beetje onderzoek,
-                    en een volledig objectieve selectieprocedure...
-                </p>
+                En na een grondig onderzoek
+                <br>
+                (aka ik dacht aan wie het
+                <br>
+                allerleukste is 😉)
+            </p>
 
-                <p class="highlight">
-                    ben jij uitgekozen.
-                </p>
-
-                <button class="primary-btn" id="startButton">
-                    Vertel verder →
-                </button>
-
-            </section>
+            <h1 style="margin-top:30px;font-size:44px;">
+                kom jij uit de bus!
+            </h1>
 
         </div>
 
-    </main>
+        <button class="btn">
+            Oké, ik ben benieuwd! →
+        </button>
 
-    <script src="app.js"></script>
+    </div>
+
+    <div class="heart one">♡</div>
+    <div class="heart two">♡</div>
+
+</div>
 
 </body>
-
 </html>
