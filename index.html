@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -25,7 +25,9 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100vh;
+    height:100vh;
+    height:100dvh;
+    overflow:hidden;
 }
 
 /* Mobiel frame */
@@ -33,22 +35,37 @@ body{
 .phone{
     width:390px;
     height:844px;
+    max-height:100vh;
+    max-height:100dvh;
     border-radius:38px;
     overflow:hidden;
     position:relative;
     box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
 
+/* op echte telefoons het frame het volledige scherm laten vullen */
+
+@media (max-width:430px){
+    .phone{
+        width:100vw;
+        height:100vh;
+        height:100dvh;
+        max-height:none;
+        border-radius:0;
+        box-shadow:none;
+    }
+}
+
 /* achtergrond, 90° gedraaid zodat de (liggende) foto de staande frame vult */
 
 .bg{
     position:absolute;
-    top:50%;
-    left:50%;
-    width:844px;
-    height:390px;
-    background:url("../PoolPicker/assets/pooltafel.jpg") center center/cover;
-    transform:translate(-50%,-50%) rotate(90deg);
+    /* top:50%; */
+    /* left:50%; */
+    width:100%;
+    height:100%;
+    background:url("../PoolPicker/assets/pooltafel.png") center center/cover;
+    /* transform:translate(-50%,-50%) rotate(90deg); */
     z-index:0;
 }
 
@@ -106,7 +123,10 @@ body{
 /* tekst */
 
 .hero{
-    margin-top:70px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
     text-align:center;
     color:white;
 }
@@ -122,12 +142,20 @@ body{
     color:#ff5c90;
 }
 
+.hero h1.challenge{
+    margin:30px auto 0;
+    max-width:80%;
+    font-size:clamp(22px,7vw,34px);
+    white-space:nowrap;
+}
+
 .hero p{
-    margin-top:28px;
-    line-height:1.9;
-    font-size:18px;
+    margin-top:22px;
+    line-height:1.7;
+    font-size:15px;
     color:#efefef;
     font-weight:300;
+    letter-spacing:.2px;
 }
 
 .hero strong{
@@ -165,14 +193,21 @@ body{
 /* button */
 
 .btn{
-    margin-bottom:35px;
+    margin-top:auto;
+    margin-bottom:10px;
     background:#ff4f83;
     color:white;
     border:none;
     border-radius:18px;
     height:64px;
-    font-size:21px;
-    font-weight:600;
+    font-family:'Quicksand',sans-serif;
+    font-size:19px;
+    font-weight:500;
+    letter-spacing:.4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
     cursor:pointer;
     transition:.25s;
 }
@@ -180,23 +215,6 @@ body{
 .btn:hover{
     transform:translateY(-2px);
     background:#ff3b74;
-}
-
-.heart{
-    position:absolute;
-    z-index:3;
-    color:#ff6d98;
-    font-size:34px;
-}
-
-.heart.one{
-    top:130px;
-    right:40px;
-}
-
-.heart.two{
-    bottom:240px;
-    right:35px;
 }
 
 </style>
@@ -227,43 +245,36 @@ body{
         <div class="hero">
 
             <h1>
-                Hey Patricia... <span>♡</span>
+                Hi Angel... <span>😊</span>
             </h1>
 
             <p>
-                Ik heb iets leuks in gedachten...
-                <br><br>
-
-                Iemand om mee te lachen,
+                Het moment is eindelijk aangebroken
                 <br>
-                een beetje te flirten
+                om te laten zien hoe goed
                 <br>
-                en natuurlijk...
-                <strong>te poolen.</strong>
+                jij écht kan <strong>poolen.</strong>
                 🎱
                 <br><br>
 
-                En na een grondig onderzoek
+                Tijd om erachter te komen
                 <br>
-                (aka ik dacht aan wie het
+                wie van ons beiden
                 <br>
-                allerleukste is 😉)
+                de betere speler is...
             </p>
 
-            <h1 style="margin-top:30px;font-size:44px;">
-                kom jij uit de bus!
+            <h1 class="challenge">
+                ben jij er klaar voor?!
             </h1>
 
         </div>
 
         <button class="btn">
-            Oké, ik ben benieuwd! →
+            Ik durf het aan! <span>→</span>
         </button>
 
     </div>
-
-    <div class="heart one">♡</div>
-    <div class="heart two">♡</div>
 
 </div>
 
