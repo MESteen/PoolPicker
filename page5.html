@@ -81,6 +81,31 @@ body{
     border-radius:20px;
 }
 
+.reload-btn{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:#fff;
+    border:2px solid #ff4f83;
+    color:#ff4f83;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:5;
+    box-shadow:0 6px 14px rgba(255,79,131,.25);
+    transition:.2s;
+}
+
+.reload-btn:hover{
+    background:#ff4f83;
+    color:white;
+    transform:rotate(90deg);
+}
+
 /* middengedeelte */
 
 .middle{
@@ -212,6 +237,13 @@ body{
             <div class="progress-fill"></div>
         </div>
 
+        <button class="reload-btn" id="reloadBtn" title="Opnieuw doen">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M13.5 8A5.5 5.5 0 1 1 11.7 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M13.5 3.5V8H9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
         <div class="middle">
 
             <div class="headline">
@@ -286,6 +318,33 @@ body{
 
     const whatsappMessage = `Hoi Mart! Ik kom je ophalen op ${dateLabel} om ${timeLabel}. Tot dan! 🎱`;
     document.getElementById('whatsappBtn').href = `https://wa.me/31642824337?text=${encodeURIComponent(whatsappMessage)}`;
+
+    if(!sessionStorage.getItem('poolpicker_saved')){
+
+        const result = {
+            date: date.toISOString(),
+            dateLabel: dateLabel,
+            time: timeLabel
+        };
+
+        fetch('/api/result', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(result)
+        }).catch(function(err){
+            console.error('Kon resultaat niet opslaan, draait de server? (npm start)', err);
+        });
+
+        sessionStorage.setItem('poolpicker_saved', '1');
+    }
+
+    document.getElementById('reloadBtn').addEventListener('click', function(){
+        localStorage.removeItem('poolpicker_date');
+        localStorage.removeItem('poolpicker_hour');
+        localStorage.removeItem('poolpicker_minute');
+        sessionStorage.removeItem('poolpicker_saved');
+        window.location.href = 'index.html';
+    });
 
 </script>
 

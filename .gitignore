@@ -4,3 +4,5 @@
 
 /.vs
 /assets
+/node_modules
+/results.json
