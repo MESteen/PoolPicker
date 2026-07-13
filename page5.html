@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PoolPicker - Perfect!</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    height:100dvh;
+    overflow:hidden;
+}
+
+/* Mobiel frame */
+
+.phone{
+    width:390px;
+    height:844px;
+    max-height:100vh;
+    max-height:100dvh;
+    border-radius:38px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    background:linear-gradient(165deg,#fdf2ef 0%,#fbe8ea 55%,#f7dfe6 100%);
+}
+
+@media (max-width:430px){
+    .phone{
+        width:100vw;
+        height:100vh;
+        height:100dvh;
+        max-height:none;
+        border-radius:0;
+        box-shadow:none;
+    }
+}
+
+.content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    padding:25px 18px;
+}
+
+/* progress, volledig gevuld */
+
+.progress-bar{
+    width:100%;
+    height:5px;
+    background:rgba(0,0,0,.08);
+    border-radius:20px;
+    margin-top:8px;
+}
+
+.progress-fill{
+    width:100%;
+    height:100%;
+    background:#ff4f83;
+    border-radius:20px;
+}
+
+/* middengedeelte */
+
+.middle{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+}
+
+/* headline */
+
+.headline{
+    text-align:center;
+}
+
+.headline h1{
+    font-family:'Dancing Script',cursive;
+    font-weight:700;
+    font-size:36px;
+    color:#2b2b2b;
+}
+
+.headline .sub{
+    margin-top:6px;
+    font-family:'Poppins',sans-serif;
+    font-size:14px;
+    color:#666;
+    font-weight:400;
+}
+
+/* info kaart */
+
+.info-card{
+    background:#fffaf8;
+    border-radius:22px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    overflow:hidden;
+}
+
+.info-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:18px 20px;
+}
+
+.info-row + .info-row{
+    border-top:1px solid #f4e6e9;
+}
+
+.info-icon{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#ffe1ea;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.info-text{
+    font-family:'Quicksand',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    color:#2b2b2b;
+}
+
+/* sticky note */
+
+.sticky-note{
+    background:#ffd7e0;
+    border-radius:4px;
+    padding:22px 20px;
+    transform:rotate(-2deg);
+    box-shadow:0 10px 20px rgba(0,0,0,.1);
+    font-family:'Dancing Script',cursive;
+    font-size:19px;
+    font-weight:600;
+    color:#3a2c2f;
+    line-height:1.5;
+}
+
+.sticky-note .sign{
+    display:block;
+    text-align:right;
+    margin-top:10px;
+    font-size:19px;
+}
+
+/* button */
+
+.btn{
+    margin-top:auto;
+    margin-bottom:14px;
+    background:#ff4f83;
+    color:white;
+    border:none;
+    border-radius:18px;
+    height:64px;
+    font-family:'Quicksand',sans-serif;
+    font-size:19px;
+    font-weight:500;
+    letter-spacing:.4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    cursor:pointer;
+    transition:.25s;
+    text-decoration:none;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    background:#ff3b74;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="phone">
+
+    <div class="content">
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <div class="middle">
+
+            <div class="headline">
+                <h1>Perfect! 😄</h1>
+                <div class="sub">Dan kom ik je ophalen op:</div>
+            </div>
+
+            <div class="info-card">
+
+                <div class="info-row">
+                    <div class="info-icon">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <rect x="2" y="3.5" width="14" height="12" rx="2" stroke="#ff4f83" stroke-width="1.4"/>
+                            <path d="M2 7H16" stroke="#ff4f83" stroke-width="1.4"/>
+                            <path d="M5.5 2V4.5M12.5 2V4.5" stroke="#ff4f83" stroke-width="1.4" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="info-text" id="dateText">Vrijdag 17 mei 2024</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <circle cx="9" cy="9" r="7" stroke="#ff4f83" stroke-width="1.4"/>
+                            <path d="M9 5V9L11.5 11" stroke="#ff4f83" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="info-text" id="timeText">19:30</div>
+                </div>
+
+            </div>
+
+            <div class="sticky-note">
+                Zet het maar in je agenda,
+                <br>
+                ik houd dat je tegen je verlies kan 😎
+                <br>
+                Tot dan, mini mensje :)
+                <span class="sign">- Mart</span>
+            </div>
+
+        </div>
+
+        <a href="#" class="btn" id="whatsappBtn" target="_blank" rel="noopener">
+            Stuur naar Mart <span>✉️</span>
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+    const dayNames = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+    const monthNames = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+
+    const storedDate = localStorage.getItem('poolpicker_date');
+    const date = storedDate ? new Date(storedDate) : new Date();
+
+    const dayLabel = dayNames[date.getDay()];
+    const monthLabel = monthNames[date.getMonth()];
+    const dayLabelCap = dayLabel.charAt(0).toUpperCase() + dayLabel.slice(1);
+    const dateLabel = `${dayLabelCap} ${date.getDate()} ${monthLabel} ${date.getFullYear()}`;
+
+    document.getElementById('dateText').textContent = dateLabel;
+
+    const hour = localStorage.getItem('poolpicker_hour') || '19';
+    const minute = localStorage.getItem('poolpicker_minute') || '30';
+    const timeLabel = `${hour}:${minute}`;
+
+    document.getElementById('timeText').textContent = timeLabel;
+
+    const whatsappMessage = `Hoi Mart! Ik kom je ophalen op ${dateLabel} om ${timeLabel}. Tot dan! 🎱`;
+    document.getElementById('whatsappBtn').href = `https://wa.me/31642824337?text=${encodeURIComponent(whatsappMessage)}`;
+
+</script>
+
+</body>
+</html>

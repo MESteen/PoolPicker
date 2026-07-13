@@ -292,7 +292,7 @@ body{
 
         </div>
 
-        <a href="page4.html" class="btn">
+        <a href="page4.html" class="btn" id="nextBtn">
             Volgende <span>→</span>
         </a>
 
@@ -376,6 +376,10 @@ body{
 
     selectedDate = today;
     renderCalendar();
+
+    document.getElementById('nextBtn').addEventListener('click', function(){
+        localStorage.setItem('poolpicker_date', selectedDate.toISOString());
+    });
 
 </script>
 

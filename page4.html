@@ -312,9 +312,9 @@ body{
 
         </div>
 
-        <button class="btn">
+        <a href="page5.html" class="btn" id="nextBtn">
             Volgende <span>→</span>
-        </button>
+        </a>
 
     </div>
 
@@ -392,6 +392,11 @@ body{
 
     buildWheel(document.getElementById('hourCol'), hours, '19', function(v){ selectedHour = v; });
     buildWheel(document.getElementById('minuteCol'), minutes, '30', function(v){ selectedMinute = v; });
+
+    document.getElementById('nextBtn').addEventListener('click', function(){
+        localStorage.setItem('poolpicker_hour', selectedHour);
+        localStorage.setItem('poolpicker_minute', selectedMinute);
+    });
 
 </script>
 
